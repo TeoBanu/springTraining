@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:c="http://www.springframework.org/schema/c"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
+
+    <bean id="fileHandlerProduct" class="util.FileHandler" c:filename="products.csv"/>
+
+    <bean id="fileHandlerStore" class="util.FileHandler" c:filename="stores.csv"/>
+
+    <bean id="storeHandler" class="service.StoreHandler" c:fileHandler-ref="fileHandlerStore" c:productHandler-ref="productHandler"/>
+
+    <bean id="productHandler" class="service.ProductHandler" c:fileHandler-ref="fileHandlerProduct"/>
+</beans>
