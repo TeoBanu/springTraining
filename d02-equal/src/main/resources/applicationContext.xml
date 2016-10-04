@@ -9,24 +9,27 @@
     <!-- implies the usage of context:annotation-config tag -->
     <context:component-scan base-package="base"/>
 
-    <bean id="productRepository" class="base.repository.ProductRepository" c:fileHandler-ref="fileHandlerProduct" primary="true">
+    <bean id="productRepository" class="base.repository.ProductRepository" c:fileHandler-ref="fileHandlerProduct"
+          primary="true">
         <property name="products">
             <list>
-                <!-- inline beans -->
-                <bean name="first" class="base.model.Product">
-                    <property name="name" value="something"/>
-                    <property name="id" value="2"/>
-                </bean>
-
-                <bean name="second" class="base.model.Product">
-                    <property name="name" value="another thing"/>
-                    <property name="id" value="5"/>
-                </bean>
+                <ref bean="first"/>
+                <ref bean="second"/>
             </list>
         </property>
     </bean>
 
-   <!-- <bean id="storeRespository" class="base.repository.StoreRepository">
+    <bean id="first" class="base.model.Product">
+        <property name="name" value="something"/>
+        <property name="id" value="2"/>
+    </bean>
+
+    <bean id="second" class="base.model.Product">
+        <property name="name" value="another thing"/>
+        <property name="id" value="5"/>
+    </bean>
+
+    <bean id="storeRepository" class="base.repository.StoreRepository">
         <property name="stock">
             <map key-type="base.model.Product" value-type="java.lang.Integer">
                 <entry key-ref="first" value="5"/>
@@ -34,7 +37,7 @@
             </map>
         </property>
     </bean>
--->
+
 
     <bean id="fileHandlerProduct" class="base.util.FileHandler" c:filename="products.csv"/>
 </beans>

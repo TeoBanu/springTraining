@@ -23,6 +23,6 @@ public class AutoWiringIntro {
         productController.displayProducts();
         final StoreController storeController = applicationContext.getBean(StoreController.class);
         System.out.println("Displaying stock: ");
-//        storeController.displayStock();
+        storeController.displayStock();
     }
 }
