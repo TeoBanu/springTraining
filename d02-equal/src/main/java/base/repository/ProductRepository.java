@@ -2,6 +2,7 @@ package base.repository;
 
 import base.model.Product;
 import base.util.FileHandler;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import javax.annotation.PostConstruct;
@@ -13,6 +14,7 @@ public class ProductRepository {
     private List<Product> products;
     private final FileHandler fileHandler;
 
+    @Autowired
     public ProductRepository(FileHandler fileHandler) {
         this.fileHandler = fileHandler;
     }

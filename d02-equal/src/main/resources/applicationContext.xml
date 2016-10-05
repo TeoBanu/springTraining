@@ -9,8 +9,9 @@
     <!-- implies the usage of context:annotation-config tag -->
     <context:component-scan base-package="base"/>
 
-    <bean id="productRepository" class="base.repository.ProductRepository" c:fileHandler-ref="fileHandlerProduct"
-          primary="true">
+    <context:property-placeholder location="filenames.properties"/>
+
+    <bean id="productRepository" class="base.repository.ProductRepository" primary="true">
         <property name="products">
             <list>
                 <ref bean="first"/>
@@ -39,5 +40,5 @@
     </bean>
 
 
-    <bean id="fileHandlerProduct" class="base.util.FileHandler" c:filename="products.csv"/>
+    <!-- <bean id="fileHandlerProduct" class="base.util.FileHandler" c:filename="products.csv"/> -->
 </beans>
