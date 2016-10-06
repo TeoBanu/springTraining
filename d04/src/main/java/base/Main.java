@@ -10,6 +10,7 @@ import com.mysql.cj.jdbc.Driver;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 
 /**
  * Created by banut on 06/10/2016.
@@ -40,18 +41,7 @@ public class Main {
 
         final StoreRepository storeRepository = new StoreRepository();
         StoreService storeService = new StoreService(storeRepository);
-        ResultSet resultSet = storeService.getStockForAllProducts(3);
-
-        try {
-            while (resultSet.next() == true) {
-                System.out.println();
-                System.out.println("Store name: " + resultSet.getString(1));
-                System.out.println("Section name: " + resultSet.getString(2));
-                System.out.println("Product name: " + resultSet.getString(3));
-                System.out.println("Stock: " + resultSet.getString(4));
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        List<String> stocks = storeService.getStockForAllProducts(3);
+        stocks.forEach((stock) -> System.out.println(stock));
     }
 }
